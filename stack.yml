@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+
+  owncloud:
+    image: owncloud
+    volumes:
+      - "./volumes/owncloud:/var/www/html:rw"
+    ports:
+      - 8080:80
+
+  mysql:
+    image: mariadb
+    volumes:
+      - "./volumes/mysql:/var/lib/mysql:rw"
+    environment:
+      MYSQL_ROOT_PASSWORD: root

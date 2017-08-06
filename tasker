@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -e
+
+if [ ! -f ./node_modules/@thecotne/tasker/tasker-core ]; then
+    yarn
+fi
+
+source ./node_modules/@thecotne/tasker/tasker-core
+
+function start { # start docker stack
+    docker stack deploy -c stack.yml owncloud
+}
+
+function stop { # rm docker stack
+    docker stack rm owncloud
+}
+
+function clean { # clean volumes
+    rm -rf ./volumes/mysql/{,.[!.],..?}*
+    rm -rf ./volumes/owncloud/{,.[!.],..?}*
+}
+
+_bootstrap "${@}"
