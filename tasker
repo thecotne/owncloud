@@ -19,6 +19,9 @@ function stop { # rm docker stack
 function prepare-volumes { # prepare volumes
     mkdir -p volumes/mysql
     mkdir -p volumes/owncloud
+    mkdir -p volumes/nginx-proxy/certs
+    mkdir -p volumes/nginx-proxy/vhost
+    mkdir -p volumes/nginx-proxy/html
 }
 
 function clean { # clean volumes
