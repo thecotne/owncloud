@@ -21,13 +21,16 @@ services:
       - ./volumes/nginx-proxy/vhost:/etc/nginx/vhost.d:rw
       - ./volumes/nginx-proxy/html:/usr/share/nginx/html:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      LETSENCRYPT_HOST: owncloud.cotne.com
+      LETSENCRYPT_EMAIL: cotne.95@gmail.com
 
   owncloud:
     image: owncloud
     volumes:
       - ./volumes/owncloud:/var/www/html:rw
     environment:
-      - VIRTUAL_HOST=owncloud.cotne.com
+      VIRTUAL_HOST: owncloud.cotne.com
 
   mysql:
     image: mariadb
